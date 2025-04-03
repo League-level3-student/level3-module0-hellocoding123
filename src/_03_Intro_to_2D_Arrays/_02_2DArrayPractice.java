@@ -31,8 +31,8 @@ public class _02_2DArrayPractice {
      *          6, 7, 8
      */
     public Integer[][] test1() {
-        
-        return null;
+    	Integer[][] arr = {{0,1,2},{3,4,5},{6,7,8}};
+        return arr;
     }
     
     /*
@@ -41,8 +41,8 @@ public class _02_2DArrayPractice {
      *          "e", "f", "g", "e"
      */
     public String[][] test2() {
-        
-        return null;
+        String[][] arr = {{"a","b","c","d"},{"e","f","g","e"}};
+        return arr;
     }
     
     /*
@@ -54,8 +54,8 @@ public class _02_2DArrayPractice {
      *          true, false
      */
     public Boolean[][] test3() {
-        
-        return null;
+        Boolean[][] arr = {{true,false},{false,false},{false,true},{true,true},{true,false}};
+        return arr;
     }
     
     /*
@@ -87,6 +87,14 @@ public class _02_2DArrayPractice {
     public Object test4() {
         Object[][] objects = { {null, null, null, null}, {null, null, null, new Object()} };
         
+        for(int r=0; r<objects.length; r++) {
+        	for(int c=0; c<objects[0].length; c++) {
+        		if(objects[r][c]!=null) {
+        			return objects[r][c];
+        		}
+        	}
+        }
+        
         return null;
     }
     
@@ -96,6 +104,14 @@ public class _02_2DArrayPractice {
      */
     public Object test5() {
         Object[][] objects = { {null, null, new Object(), null}, {null, null, null, null} };
+        
+        for(int r=0; r<objects.length; r++) {
+        	for(int c=0; c<objects[0].length; c++) {
+        		if(objects[r][c]!=null) {
+        			return objects[r][c];
+        		}
+        	}
+        }
         
         return null;
     }
@@ -107,7 +123,13 @@ public class _02_2DArrayPractice {
     public Integer test6() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
         
-        return null;
+        int sum = 0;
+        
+        for(int i = 0; i<nums[0].length; i++) {
+        	sum+=nums[0][i];
+        }
+        
+        return sum;
     }
     
     /*
@@ -117,7 +139,13 @@ public class _02_2DArrayPractice {
     public Integer test7() {
         int[][] nums = { {8, 7, 6, 5}, {4, 3}, {2, 1, 0} };
         
-        return null;
+        int sum = 0;
+        
+        for(int i = 0; i<nums.length; i++) {
+        	sum+=nums[i][0];
+        }
+        
+        return sum;
     }
     
     /*
@@ -126,7 +154,13 @@ public class _02_2DArrayPractice {
      */
     public Integer getSumByRow(int[][] matrix, int row) {
         
-        return null;
+int 	sum = 0;
+        
+        for(int i = 0; i<matrix[0].length; i++) {
+        	sum+=matrix[row][i];
+        }
+        
+        return sum;
     }
     
     /*
@@ -135,7 +169,13 @@ public class _02_2DArrayPractice {
      */
     public Integer getSumByColumn(int[][] matrix, int col) {
         
-        return null;
+        int sum = 0;
+        
+        for(int i = 0; i<matrix.length; i++) {
+        	sum+=matrix[i][col];
+        }
+        
+        return sum;
     }
     
     /*
@@ -158,12 +198,17 @@ public class _02_2DArrayPractice {
      *    boundaries, return null.
      */
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
-        
-        return null;
+       
+    	
+    	if(col >= matrix.length-1 || row >= matrix[0].length) {
+    		return null;
+    	}
+    	
+        return matrix[row][col+1];
     }
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
-        
+        //start w this
         return null;
     }
     
