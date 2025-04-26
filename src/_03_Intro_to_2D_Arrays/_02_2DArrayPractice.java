@@ -200,7 +200,7 @@ int 	sum = 0;
     public Integer getEastNeighbor(int[][] matrix, int row, int col) {
        
     	
-    	if(col >= matrix.length-1 || row >= matrix[0].length) {
+    	if(col >= matrix.length-1 || row >= matrix[0].length||col<0 || row<0) {
     		return null;
     	}
     	
@@ -209,16 +209,30 @@ int 	sum = 0;
     
     public Integer getWestNeighbor(int[][] matrix, int row, int col) {
         //start w this
-        return null;
+    	
+    	if(col <= 0 || row >= matrix[0].length||col<0 || row<0) {
+    		return null;
+    	}
+    	
+    	return matrix[row][col-1];
     }
     
     public Integer getNorthNeighbor(int[][] matrix, int row, int col) {
         
-        return null;
+    	if(col >= matrix.length|| row <= 0|| col<0 || row>=matrix[0].length) {
+    		return null;
+    	}
+    	
+    	return matrix[row-1][col];
     }
     
     public Integer getSouthNeighbor(int[][] matrix, int row, int col) {
         
-        return null;
+    	if(col >= matrix.length|| row >= matrix[0].length-1|| col<0 || row>0) {
+    		return null;
+    	}
+    	
+    	return matrix[row+1][col];
+    	
     }
 }
