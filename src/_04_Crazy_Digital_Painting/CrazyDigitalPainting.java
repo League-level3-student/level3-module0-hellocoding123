@@ -19,8 +19,11 @@ public class CrazyDigitalPainting {
         // 4. Iterate through the 2D array and initialize each Color object
         //    to a new color. The sample image was created using the following 
         //    pattern:
-        //    colors[i][j] = new Color(i % 256, (i * j) % 256, j % 256);
-
+    	for(int r = 0; r < colors.length-1; r++) {
+    		for(int c = 0; c < colors[r].length-1; c++) {
+    			colors[r][c] = new Color(r % 256, (r * c) % 256, r % 256);
+    		}
+    	}
         // 5. Come up with your own pattern to make a cool crazy image.
 
         // 6. Use the ColorArrayDisplayer class to call the displayColorsAsImage method 
