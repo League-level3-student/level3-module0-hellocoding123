@@ -19,7 +19,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     private Timer timer;
 
     // 1. Create a 2D array of Cells. Do not initialize it.
-    
+    Cell[][]cells;
 
     public WorldPanel(int w, int h, int cpr) {
         setPreferredSize(new Dimension(w, h));
@@ -28,25 +28,46 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
         this.cellsPerRow = cpr;
 
         // 2. Calculate the cell size.
-
+        this.cellSize = w/cellsPerRow;
         // 3a. Initialize the cell array to the appropriate size.
-
+        cells = new Cell[cellsPerRow][cellsPerRow];
         // 3b. Iterate through the array and initialize each cell.
         //    Don't forget to consider the cell's dimensions when 
         //    passing in the location.
-
+        for(int r = 0; r < cellsPerRow; r++) {
+        	for (int c = 0; c < cellsPerRow; c++) {
+        		int x = c*cellSize;
+        		int y = r*cellSize;
+        		cells[r][c] = new Cell(x,y,cellSize);
+        	}
+        }
     }
 
     public void randomizeCells() {
         // 4. Iterate through each cell and randomly set each
         //    cell's isAlive memeber to true or false
-
+    	 for(int r = 0; r < cellsPerRow; r++) {
+         	for (int c = 0; c < cellsPerRow; c++) {
+         		int rand = (int)Math.random()*2;
+         		if(rand == 1) {
+         			cells[r][c].isAlive = true;
+         		}
+         		if(rand==2) {
+         			cells[r][c].isAlive = false;
+         		}
+         	}
+         }
         repaint();
     }
 
     public void clearCells() {
         // 5. Iterate through the cells and set them all to dead.
-
+    	 for(int r = 0; r < cellsPerRow; r++) {
+         	for (int c = 0; c < cellsPerRow; c++) {
+         		
+         		cells[r][c].isAlive=false;
+         	}
+         }
         repaint();
     }
 
@@ -65,7 +86,11 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
     @Override
     public void paintComponent(Graphics g) {
         // 6. Iterate through the cells and draw them all
-
+    	 for(int r = 0; r < cellsPerRow; r++) {
+         	for (int c = 0; c < cellsPerRow; c++) {
+         		cells[r][c].draw(g);
+         	}
+         }
 
         // Draw the perimeter of the grid
         g.setColor(Color.BLACK);
